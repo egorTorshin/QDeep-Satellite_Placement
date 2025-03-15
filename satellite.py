@@ -42,7 +42,6 @@ import sys
 import matplotlib.pyplot as plt
 import dimod
 import neal
-from dwave.system import LeapHybridSampler
 
 def read_in_args():
     """ Read in user specified parameters."""
@@ -147,7 +146,7 @@ if __name__ == '__main__':
     bqm = build_bqm(data, constellation_size)
 
     if args.solver == 'hss':
-        sampleset = LeapHybridSampler().sample(bqm,
+        sampleset = neal.SimulatedAnnealingSampler().sample(bqm,
                             label='Example - Satellite Placement').aggregate()
     elif args.solver == 'neal':
         sampleset = neal.Neal().sample(bqm, num_reads=100).aggregate()
