@@ -1,2 +1,3 @@
 qdeepsdk
 matplotlib>=3.3.4
+dimod
