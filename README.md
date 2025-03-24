@@ -22,15 +22,13 @@ Note: in this demo we are assuming that `N` is a multiple of `k`.
 
 ## Usage
 
-To run the smaller demo, using D-Wave's Simulated Annealing package (Neal),
-run the command:
+To run the smaller demo, run the command:
 
 ```bash
 python satellite.py small.json neal
 ```
 
-To run the larger demo, using D-Wave's Hybrid Solver Service (HSS),
-run the command:
+To run the larger demo, run the command:
 
 ```bash
 python satellite.py large.json hss
@@ -55,16 +53,6 @@ of solutions:
 * A specific number of constellations in our final solution (i.e. encourage the
   solution to have `k` constellations)
 
-## Code Specifics
-
-We add weights to each constellation such that we are favoring constellations
-with a high coverage (aka high score). This is done with
-`bqm.add_variable(frozenset(constellation), -score)`.  Note that `frozenset` is
-used to convey the concept that each variable in the model is a set of
-individual satellites, and the ordering does not matter.  Incidentally, the code
-that defines the variables iterates over only the combinations (not the
-permutations), so defining the variables as tuples would work just as well
-(however, `set` cannot be used because the variables must be immutable).
 
 ## References
 
